@@ -1,17 +1,19 @@
 ---
-  - name: main | networks
-    include_tasks: 1_networks.yml
-  - name: main | security groups
-    include_tasks: 2_security_groups.yml
-  - name: main | ssh keys
-    include_tasks: 3_ssh_keys.yml
+# tasks file for arillso.exoscale
 
-  - name: main | create hosts
-    include_tasks: 4_exoscale_create.yml
-    when: exoscale_instance
-  - name: main | scale disk
-    include_tasks: 5_disk_scale.yml
-    when: exoscale_instance and exoscale_dyn_created is defined and exoscale_dyn_created
-  - name: main | start nodes
-    include_tasks: 6_exoscale_start.yml
-    when: exoscale_instance
+- name: main | networks
+  include_tasks: 1_networks.yml
+- name: main | security groups
+  include_tasks: 2_security_groups.yml
+- name: main | ssh keys
+  include_tasks: 3_ssh_keys.yml
+
+- name: main | create hosts
+  include_tasks: 4_exoscale_create.yml
+  when: exoscale_instance
+- name: main | scale disk
+  include_tasks: 5_disk_scale.yml
+  when: exoscale_instance and exoscale_dyn_created is defined and exoscale_dyn_created
+- name: main | start nodes
+  include_tasks: 6_exoscale_start.yml
+  when: exoscale_instance

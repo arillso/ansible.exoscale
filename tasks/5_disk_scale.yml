@@ -1,4 +1,6 @@
 ---
+# tasks file for arillso.exoscale
+
 - name: get instance data
   cs_instance_facts:
     name: "{{ inventory_hostname }}"
