@@ -3,7 +3,7 @@
 [![Build Status](https://img.shields.io/travis/arillso/ansible.exoscale.svg?branch=master&style=popout-square)](https://travis-ci.org/arillso/ansible.exoscale)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=popout-square)](https://sbaerlo.ch/licence)
 [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-exoscale-blue.svg?style=popout-square)](https://galaxy.ansible.com/arillso/exoscale)
-[![Ansible Role](https://img.shields.io/ansible/role/d/42773.svg?style=popout-square)](https://galaxy.ansible.com/arillso/exoscale)
+<!-- [![Ansible Role](https://img.shields.io/ansible/role/d/42773.svg?style=popout-square)](https://galaxy.ansible.com/arillso/exoscale) -->
 
 ## Description
 [Exoscale](www.exoscale.ch) is a provider for VPS. this role aims to automate
