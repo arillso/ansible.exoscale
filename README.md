@@ -146,6 +146,7 @@ Supply a list of dicts with the following keys:
         - {'start_port':'443', 'protocol':'tcp', 'type':'ingress'}
 ```
 the rules have the following keys available:
+
 | Name         | Description                         | Required |
 | ------------ | ----------------------------------- |:--------:|
 | `start_port` | the start port                      |    🟩    |
