@@ -1,0 +1,11 @@
+---
+  - name: networks | create networks
+    cs_network:
+      name: "{{ item.name }}"
+      zone: "{{ node_zone }}"
+      network_offering: "{{ item.offering | default('Private Network') }}"
+    run_once: true
+    delegate_to: 127.0.0.1
+    with_items: "{{ node_networks_definition }}"
+    tags:
+      - setup

@@ -1,0 +1,8 @@
+---
+  - name: ssh_keys | add ssh pub keys
+    cs_sshkeypair:
+      name: "{{ item.name }}"
+      public_key: "{{ item.pub }}"
+    with_items: "{{ node_ssh_key_def }}"
+    run_once: true
+    delegate_to: 127.0.0.1

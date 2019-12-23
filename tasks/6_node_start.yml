@@ -1,0 +1,6 @@
+---
+  - name: node_start | start VM
+    cs_instance:
+      name: "{{ inventory_hostname }}"
+      state: started
+    delegate_to: 127.0.0.1

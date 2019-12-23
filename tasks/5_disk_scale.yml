@@ -1,0 +1,19 @@
+---
+- name: get instance data
+  cs_instance_facts:
+    name: "{{ inventory_hostname }}"
+  delegate_to: 127.0.0.1
+  register: exo_facts
+
+- name: get volume data
+  command: "cs listVolumes name={{ exo_facts.ansible_facts.cloudstack_instance.volumes[0].name }} vmname={{ inventory_hostname }}"
+  register: volume
+  changed_when: false
+  delegate_to: 127.0.0.1
+  when: vm_exists.failed
+
+- name: scale volume up
+  command: "cs resizeVolume size={{ node_disk }} id={{ volume.stdout | from_json | json_query('volume[0].id') }}"
+  delegate_to: 127.0.0.1
+  when: node_disk*1000000000 > volume.stdout | from_json | json_query('volume[0].size')
+  when: vm_exists.failed
