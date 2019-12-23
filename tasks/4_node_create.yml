@@ -1,30 +1,30 @@
 ---
-  - name: node_create | check which hosts need to be created
+  - name: exoscale_create | check which hosts need to be created
     cs_instance_facts:
       name: "{{ inventory_hostname }}"
     ignore_errors: yes
     delegate_to: 127.0.0.1
     register: vm_exists
 
-  - name: node_create | create vm on exoscale
+  - name: exoscale_create | create vm on exoscale
     cs_instance:
       display_name: "{{ inventory_hostname }}"
       name: "{{ inventory_hostname }}"
-      zone: "{{ node_zone }}"
-      template: "{{ node_template }}"
-      service_offering: "{{ node_service_offering }}"
-      networks: "{{ node_internal_networks }}"
-      security_groups: "{{ node_firewalls }}"
-      ssh_key: "{{ node_ssh_key }}"
-      user_data: "{{ node_user_data }}"
+      zone: "{{ exoscale_zone }}"
+      template: "{{ exoscale_template }}"
+      service_offering: "{{ exoscale_service_offering }}"
+      networks: "{{ exoscale_internal_networks }}"
+      security_groups: "{{ exoscale_firewalls }}"
+      ssh_key: "{{ exoscale_ssh_key }}"
+      user_data: "{{ exoscale_user_data }}"
       state: stopped
       template_filter: featured
     delegate_to: 127.0.0.1
     register: vm_created
     when: vm_exists.failed
 
-  - name: node_create | create vm on exoscale
+  - name: exoscale_create | create vm on exoscale
     set_fact:
-      node_dyn_created: true
+      exoscale_dyn_created: true
     delegate_to: 127.0.0.1
     when: vm_exists.failed and not vm_created.failed

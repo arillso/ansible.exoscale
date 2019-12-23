@@ -34,14 +34,14 @@ To create a new machine, you can define a host as follows:
 ---
 all:
     vars:
-        node_zone: "CH-DK-2"
+        exoscale_zone: "CH-DK-2"
     hosts:
         test.syntro.ch:
-            node_ssh_key: test
-            node_template: "Linux Ubuntu 18.04 LTS 64-bit"
-            node_service_offering: "Micro"
-            node_disk: 20
-            node_is_exoscale: true
+            exoscale_ssh_key: test
+            exoscale_template: "Linux Ubuntu 18.04 LTS 64-bit"
+            exoscale_service_offering: "Micro"
+            exoscale_disk: 20
+            exoscale_instance: true
 ```
 If you now apply the role to the `test.syntro.ch` host, it will create a new
 instance with a disk size of 20 GB using the `test` key in your account. you
@@ -64,8 +64,8 @@ network, we can use the following template:
 ---
 all:
     vars:
-        node_zone: "CH-DK-2"
-        node_firewalls_definition:
+        exoscale_zone: "CH-DK-2"
+        exoscale_firewalls_definition:
             - name: http_https
               description: default http/https set
               rules:
@@ -75,29 +75,29 @@ all:
               description: default ssh set
               rules:
                     - {'start_port':'22', 'protocol':'tcp', 'type':'ingress'}
-        node_networks_definition:
+        exoscale_networks_definition:
             - name: private_network
     hosts:
         test-1.syntro.ch:
-            node_ssh_key: test
-            node_template: "Linux Ubuntu 18.04 LTS 64-bit"
-            node_service_offering: "Micro"
-            node_disk: 20
-            node_is_exoscale: true
-            node_internal_networks:
+            exoscale_ssh_key: test
+            exoscale_template: "Linux Ubuntu 18.04 LTS 64-bit"
+            exoscale_service_offering: "Micro"
+            exoscale_disk: 20
+            exoscale_instance: true
+            exoscale_internal_networks:
                 - internal
-            node_firewalls:
+            exoscale_firewalls:
                 - http_https
                 - ssh
         test-2.syntro.ch:
-            node_ssh_key: test
-            node_template: "Linux Ubuntu 18.04 LTS 64-bit"
-            node_service_offering: "Micro"
-            node_disk: 20
-            node_is_exoscale: true
-            node_internal_networks:
+            exoscale_ssh_key: test
+            exoscale_template: "Linux Ubuntu 18.04 LTS 64-bit"
+            exoscale_service_offering: "Micro"
+            exoscale_disk: 20
+            exoscale_instance: true
+            exoscale_internal_networks:
                 - internal
-            node_firewalls:
+            exoscale_firewalls:
                 - http_https
                 - ssh
 ```
@@ -123,18 +123,18 @@ pip install cs jmespath sshpubkeys
 
 | Name                        | Default        | Must be Global | Description                             |
 | --------------------------- | -------------- |:--------------:| --------------------------------------- |
-| `node_is_exoscale`          | `false`        |       🟥       | Determines if this host will be created |
-| `node_template`             | **(required)** |       🟥       | The template to be used                 |
-| `node_service_offering`     | **(required)** |       🟥       | The service offering (eg. `Micro`)      |
-| `node_disk`                 | `10`           |       🟥       | the disksize to be applied              |
-| `node_internal_networks`    | `[]`           |       🟥       | the networks this instance is part of   |
-| `node_firewalls`            | `[]`           |       🟥       | the security rules applied              |
-| `node_ssh_key`              | **(required)** |       🟥       | the name of the public ssh key to use   |
-| `node_user_data`            | `''`           |       🟥       | user data applied to the instance       |
-| `node_zone`                 | **(required)** |       🟩       | the zone to manage                      |
-| `node_networks_definition`  | `[]`           |       🟩       | network definition (List of names)      |
-| `node_firewalls_definition` | `[]`           |       🟩       | security groups definition              |
-| `node_ssh_key_def`          | `[]`           |       🟩       | public key definition                   |
+| `exoscale_instance`          | `false`        |       🟥       | Determines if this host will be created |
+| `exoscale_template`             | **(required)** |       🟥       | The template to be used                 |
+| `exoscale_service_offering`     | **(required)** |       🟥       | The service offering (eg. `Micro`)      |
+| `exoscale_disk`                 | `10`           |       🟥       | the disksize to be applied              |
+| `exoscale_internal_networks`    | `[]`           |       🟥       | the networks this instance is part of   |
+| `exoscale_firewalls`            | `[]`           |       🟥       | the security rules applied              |
+| `exoscale_ssh_key`              | **(required)** |       🟥       | the name of the public ssh key to use   |
+| `exoscale_user_data`            | `''`           |       🟥       | user data applied to the instance       |
+| `exoscale_zone`                 | **(required)** |       🟩       | the zone to manage                      |
+| `exoscale_networks_definition`  | `[]`           |       🟩       | network definition (List of names)      |
+| `exoscale_firewalls_definition` | `[]`           |       🟩       | security groups definition              |
+| `exoscale_ssh_key_def`          | `[]`           |       🟩       | public key definition                   |
 
 #### Firewalling Definition
 Supply a list of dicts with the following keys:
@@ -158,14 +158,14 @@ the rules have the following keys available:
 #### SSH Keys
 Define a list of public keys as follows:
 ```yaml
-node_ssh_key_def:
+exoscale_ssh_key_def:
     - name: docker
       pub: ssh-rsa ...
 ```
 
 #### User Data
 You can specify user data passed to the instances on startup with
-`node_user_data`. This comes in handy to initially set up networks or packages
+`exoscale_user_data`. This comes in handy to initially set up networks or packages
 (eg. python). Read more in [this doc article](https://community.exoscale.com/documentation/compute/cloud-init/).
 
 ## Dependencies

@@ -7,11 +7,11 @@
     include_tasks: 3_ssh_keys.yml
 
   - name: main | create hosts
-    include_tasks: 4_node_create.yml
-    when: node_is_exoscale
+    include_tasks: 4_exoscale_create.yml
+    when: exoscale_instance
   - name: main | scale disk
     include_tasks: 5_disk_scale.yml
-    when: node_is_exoscale and node_dyn_created is defined and node_dyn_created
+    when: exoscale_instance and exoscale_dyn_created is defined and exoscale_dyn_created
   - name: main | start nodes
-    include_tasks: 6_node_start.yml
-    when: node_is_exoscale
+    include_tasks: 6_exoscale_start.yml
+    when: exoscale_instance

@@ -1,9 +1,9 @@
 ---
-node_is_exoscale: false
-node_disk: 10
-node_internal_networks: []
-node_firewalls: []
-node_user_data: ''
-node_networks_definition: []
-node_firewalls_definition: []
-node_ssh_key_def: []
+exoscale_instance: false
+exoscale_disk: 10
+exoscale_internal_networks: []
+exoscale_firewalls: []
+exoscale_user_data: ''
+exoscale_networks_definition: []
+exoscale_firewalls_definition: []
+exoscale_ssh_key_def: []

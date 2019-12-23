@@ -1,5 +1,5 @@
 ---
-  - name: node_start | start VM
+  - name: exoscale_start | start VM
     cs_instance:
       name: "{{ inventory_hostname }}"
       state: started
