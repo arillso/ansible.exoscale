@@ -17,5 +17,4 @@
 - name: scale volume up
   command: "cs resizeVolume size={{ exoscale_disk }} id={{ volume.stdout | from_json | json_query('volume[0].id') }}"
   delegate_to: 127.0.0.1
-  when: exoscale_disk*1000000000 > volume.stdout | from_json | json_query('volume[0].size')
-  when: vm_exists.failed
+  when: vm_exists.failed and exoscale_disk*1000000000 > volume.stdout | from_json | json_query('volume[0].size')
