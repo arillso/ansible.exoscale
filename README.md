@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/arillso/ansible.exoscale.svg?branch=master)](https://travis-ci.com/arillso/ansible.exoscale)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=popout-square)](https://sbaerlo.ch/licence)
-[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-exoscale-blue.svg?style=popout-square)](https://galaxy.ansible.com/arillso/exoscale)
+[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-arillso.exoscale-blue.svg?style=popout-square)](https://galaxy.ansible.com/arillso/exoscale)
 [![Ansible Role](https://img.shields.io/ansible/role/d/45457.svg?style=popout-square)](https://galaxy.ansible.com/arillso/exoscale)
 
 ## Description
