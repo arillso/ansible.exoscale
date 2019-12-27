@@ -1,28 +1,29 @@
 ---
-  - name: security_groups | make sure that the node security_group exists
-    cs_securitygroup:
-      name: "{{ item.name }}"
-      state: present
-      description: "{{ item.description }}"
-    run_once: true
-    with_items: "{{ exoscale_firewalls_definition }}"
-    loop_control:
-      label: "{{ item.name }}"
-    delegate_to: 127.0.0.1
+# tasks file for arillso.exoscale
 
-  - name: security_groups | ensure security rules are present
-    cs_securitygroup_rule:
-      security_group: "{{ item[0].name }}"
-      start_port: "{{ item[1].start_port }}"
-      end_port: "{{ item[1].end_port | default(item[1].start_port) }}"
-      protocol: "{{ item[1].protocol }}"
-      cidr: "{{ item[1].cider | default('0.0.0.0/0') }}"
-      type: "{{ item[1].type }}"
-    with_list: "{{lookup('subelements', exoscale_firewalls_definition, 'rules')}}"
-    loop_control:
-      label: "{{ item[0].name }}, {{ item[1].start_port }} - {{ item[1].end_port | default(item[1].start_port) }}"
-    run_once: true
-    delegate_to: 127.0.0.1
+- name: security_groups | make sure that the node security_group exists
+  cs_securitygroup:
+    name: '{{ item.name }}'
+    state: present
+    description: '{{ item.description }}'
+  run_once: true
+  with_items: '{{ exoscale_firewalls_definition }}'
+  loop_control:
+    label: '{{ item.name }}'
+  delegate_to: 127.0.0.1
 
-  # - name: security_groups | remove unnecessary security groups
-  # - name: security_groups | remove unnecessary security group roles
+- name: security_groups | ensure security rules are present
+  cs_securitygroup_rule:
+    security_group: '{{ item[0].name }}'
+    start_port: '{{ item[1].start_port }}'
+    end_port: '{{ item[1].end_port | default(item[1].start_port) }}'
+    protocol: '{{ item[1].protocol }}'
+    cidr: "{{ item[1].cider | default('0.0.0.0/0') }}"
+    type: '{{ item[1].type }}'
+  with_list: "{{ lookup('subelements', exoscale_firewalls_definition, 'rules') }}"
+  loop_control:
+    label: '{{ item[0].name }}, {{ item[1].start_port }} - {{ item[1].end_port | default(item[1].start_port) }}'
+  run_once: true
+  delegate_to: 127.0.0.1
+# - name: security_groups | remove unnecessary security groups
+# - name: security_groups | remove unnecessary security group roles

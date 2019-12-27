@@ -1,30 +1,32 @@
 ---
-  - name: exoscale_create | check which hosts need to be created
-    cs_instance_facts:
-      name: "{{ inventory_hostname }}"
-    ignore_errors: yes
-    delegate_to: 127.0.0.1
-    register: vm_exists
+# tasks file for arillso.exoscale
 
-  - name: exoscale_create | create vm on exoscale
-    cs_instance:
-      display_name: "{{ inventory_hostname }}"
-      name: "{{ inventory_hostname }}"
-      zone: "{{ exoscale_zone }}"
-      template: "{{ exoscale_template }}"
-      service_offering: "{{ exoscale_service_offering }}"
-      networks: "{{ exoscale_internal_networks }}"
-      security_groups: "{{ exoscale_firewalls }}"
-      ssh_key: "{{ exoscale_ssh_key }}"
-      user_data: "{{ exoscale_user_data }}"
-      state: stopped
-      template_filter: featured
-    delegate_to: 127.0.0.1
-    register: vm_created
-    when: vm_exists.failed
+- name: exoscale_create | check which hosts need to be created
+  cs_instance_facts:
+    name: '{{ inventory_hostname }}'
+  ignore_errors: true
+  delegate_to: 127.0.0.1
+  register: vm_exists
 
-  - name: exoscale_create | create vm on exoscale
-    set_fact:
-      exoscale_dyn_created: true
-    delegate_to: 127.0.0.1
-    when: vm_exists.failed and not vm_created.failed
+- name: exoscale_create | create vm on exoscale
+  cs_instance:
+    display_name: '{{ inventory_hostname }}'
+    name: '{{ inventory_hostname }}'
+    zone: '{{ exoscale_zone }}'
+    template: '{{ exoscale_template }}'
+    service_offering: '{{ exoscale_service_offering }}'
+    networks: '{{ exoscale_internal_networks }}'
+    security_groups: '{{ exoscale_firewalls }}'
+    ssh_key: '{{ exoscale_ssh_key }}'
+    user_data: '{{ exoscale_user_data }}'
+    state: stopped
+    template_filter: featured
+  delegate_to: 127.0.0.1
+  register: vm_created
+  when: vm_exists.failed
+
+- name: exoscale_create | create vm on exoscale
+  set_fact:
+    exoscale_dyn_created: true
+  delegate_to: 127.0.0.1
+  when: vm_exists.failed and not vm_created.failed

@@ -121,9 +121,9 @@ pip install cs jmespath sshpubkeys
 
 ## Role Variables
 
-| Name                        | Default        | Must be Global | Description                             |
-| --------------------------- | -------------- |:--------------:| --------------------------------------- |
-| `exoscale_instance`          | `false`        |       🟥       | Determines if this host will be created |
+| Name                            | Default        | Must be Global | Description                             |
+| ------------------------------- | -------------- |:--------------:| --------------------------------------- |
+| `exoscale_instance`             | `false`        |       🟥       | Determines if this host will be created |
 | `exoscale_template`             | **(required)** |       🟥       | The template to be used                 |
 | `exoscale_service_offering`     | **(required)** |       🟥       | The service offering (eg. `Micro`)      |
 | `exoscale_disk`                 | `10`           |       🟥       | the disksize to be applied              |

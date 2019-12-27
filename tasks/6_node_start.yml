@@ -1,6 +1,8 @@
 ---
-  - name: exoscale_start | start VM
-    cs_instance:
-      name: "{{ inventory_hostname }}"
-      state: started
-    delegate_to: 127.0.0.1
+# tasks file for arillso.exoscale
+
+- name: exoscale_start | start VM
+  cs_instance:
+    name: '{{ inventory_hostname }}'
+    state: started
+  delegate_to: 127.0.0.1
