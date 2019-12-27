@@ -20,7 +20,7 @@
     protocol: '{{ item[1].protocol }}'
     cidr: "{{ item[1].cider | default('0.0.0.0/0') }}"
     type: '{{ item[1].type }}'
-  with_list: "{{lookup('subelements', exoscale_firewalls_definition, 'rules')}}"
+  with_list: "{{ lookup('subelements', exoscale_firewalls_definition, 'rules') }}"
   loop_control:
     label: '{{ item[0].name }}, {{ item[1].start_port }} - {{ item[1].end_port | default(item[1].start_port) }}'
   run_once: true
