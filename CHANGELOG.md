@@ -5,9 +5,12 @@ and [human-readable changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
 ### Added
-* role download conter to readme
+* role download counter to readme
 ### Changed
 * display correct role name on badge
+### Fixed
+* using `cs_instance_info`
+* updated molecule config for molecule v3
 
 ## [1.0.0]
 * Initial release
