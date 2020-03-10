@@ -25,5 +25,8 @@ scenario:
   name: default
 verifier:
   name: testinfra
-  lint:
-    name: flake8
+  lint: |
+    set -e
+    yamllint .
+    ansible-lint
+    flake8
