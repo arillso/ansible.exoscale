@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 and [human-readable changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
+
+## [1.0.1] - 2020-03-11
 ### Added
 * role download counter to readme
 ### Changed
@@ -16,4 +18,5 @@ and [human-readable changelog](https://keepachangelog.com/en/1.0.0/).
 * Initial release
 
 
-[1.0.0]: https://github.com/arillso/ansible.exoscale/releases/tag/1.4.0
+[1.0.1]: https://github.com/arillso/ansible.exoscale/releases/tag/1.0.1
+[1.0.0]: https://github.com/arillso/ansible.exoscale/releases/tag/1.0.0
