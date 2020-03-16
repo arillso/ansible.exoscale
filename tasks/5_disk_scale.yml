@@ -8,7 +8,7 @@
   register: exo_facts
 
 - name: get volume data
-  command: "cs listVolumes name={{ exo_facts.ansible_facts.cloudstack_instance.volumes[0].name }} vmname={{ inventory_hostname }}"
+  command: "cs listVolumes name={{ exo_facts.instances[0].volumes[0].name }} vmname={{ inventory_hostname }}"
   register: volume
   changed_when: false
   delegate_to: 127.0.0.1
