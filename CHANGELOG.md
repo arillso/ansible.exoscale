@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 and [human-readable changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## Unreleased
+## [1.1.0] - 2020-03-16
+### Changed
+* raised minimal Ansible version to `2.9`
+### Fixed
+* correctly retrieve volume information for volume creation
 
 ## [1.0.1] - 2020-03-11
 ### Added
@@ -18,5 +23,6 @@ and [human-readable changelog](https://keepachangelog.com/en/1.0.0/).
 * Initial release
 
 
+[1.1.0]: https://github.com/arillso/ansible.exoscale/releases/tag/1.1.0
 [1.0.1]: https://github.com/arillso/ansible.exoscale/releases/tag/1.0.1
 [1.0.0]: https://github.com/arillso/ansible.exoscale/releases/tag/1.0.0
