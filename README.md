@@ -5,7 +5,7 @@
 [![Ansible Role](https://img.shields.io/ansible/role/d/45457.svg?style=popout-square)](https://galaxy.ansible.com/arillso/exoscale)
 
 ## Description
-[Exoscale](www.exoscale.ch) is a provider for VPS. This role aims to automate
+[Exoscale](https://www.exoscale.com) is a provider for VPS. This role aims to automate
 the creation of infrastructure as automated as possible.
 
 The goal behind this role is to create a way of defining infrastructure as code
