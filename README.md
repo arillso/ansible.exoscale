@@ -1,4 +1,8 @@
 # Ansible Role: exoscale
+
+:warning: **DEPRECATED:** Exoscale will no longer support the Cloudstack API after May 1, 2024.
+[See Announcement](https://changelog.exoscale.com/en/deprecation-api-v1-as-of-may-1st-2024-uVYHUVZ3).
+
 [![Build Status](https://travis-ci.com/arillso/ansible.exoscale.svg?branch=master)](https://travis-ci.com/arillso/ansible.exoscale)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=popout-square)](https://sbaerlo.ch/licence)
 [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-arillso.exoscale-blue.svg?style=popout-square)](https://galaxy.ansible.com/arillso/exoscale)
